@@ -1,0 +1,30 @@
+{% extends "AppEI/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-5">LISTADO DE JUGADORES</h1>
+{% endblock %}
+
+
+{% block contenido_que_cambia %}
+
+<ul>
+    <h2>LISTADO DE JUGADORES</h2>
+    {% for jugador in jugadores %}
+    <li>{{ jugador.nombre }} {{ jugador.apellido }} - {{ jugador.club }}</li>
+    <a class="btn btn-danger" href="{% url 'eliminarJugador' jugador.id %}">Eliminar</a>
+    <a class="btn btn-success" href="{% url 'editarJugador' jugador.id %}">Editar</a>
+
+
+    {% endfor %}
+</ul>
+
+<h2>{{ mensaje }}</h2>
+
+<a class="btn btn-primary" href="{% url 'jugadorFormulario' %}">Agregar Jugador</a>
+
+
+
+
+{% endblock %}

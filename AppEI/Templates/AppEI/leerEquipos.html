@@ -1,0 +1,30 @@
+{% extends "AppEI/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-5">LISTADO DE EQUIPOS</h1>
+{% endblock %}
+
+
+{% block contenido_que_cambia %}
+
+<ul>
+    <h2>LISTADO DE EQUIPOS</h2>
+    {% for equipo in equipos %}
+    <li>{{ equipo.nombre }} - {{ equipo.pais }}</li>
+    <a class="btn btn-danger" href="{% url 'eliminarEquipo' equipo.id %}">Eliminar</a>
+    <a class="btn btn-success" href="{% url 'editarEquipo' equipo.id %}">Editar</a>
+
+
+    {% endfor %}
+</ul>
+
+<h2>{{ mensaje }}</h2>
+
+<a class="btn btn-primary" href="{% url 'equipoFormulario' %}">Agregar Equipo</a>
+
+
+
+
+{% endblock %}

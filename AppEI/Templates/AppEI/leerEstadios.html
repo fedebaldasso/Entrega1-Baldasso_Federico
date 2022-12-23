@@ -1,0 +1,30 @@
+{% extends "AppEI/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-5">LISTADO DE ESTADIOS</h1>
+{% endblock %}
+
+
+{% block contenido_que_cambia %}
+
+<ul>
+    <h2>LISTADO DE ESTADIOS</h2>
+    {% for estadio in estadios %}
+    <li>{{ estadio.nombre }} - {{ estadio.club }} - {{ estadio.ciudad }} - {{ estadio.pais }}</li>
+    <a class="btn btn-danger" href="{% url 'eliminarEstadio' estadio.id %}">Eliminar</a>
+    <a class="btn btn-success" href="{% url 'editarEstadio' estadio.id %}">Editar</a>
+
+
+    {% endfor %}
+</ul>
+
+<h2>{{ mensaje }}</h2>
+
+<a class="btn btn-primary" href="{% url 'estadioFormulario' %}">Agregar Estadio</a>
+
+
+
+
+{% endblock %}
